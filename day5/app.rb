@@ -6,6 +6,7 @@ require 'json'
 require 'net/http'
 require 'sinatra/activerecord'
 require './models'
+#require 'lazy_high_charts'
 
 
 enable :sessions
@@ -78,34 +79,62 @@ keyword = params[:keyword]
  uri.query = URI.encode_www_form({
    q: keyword,
    format: "json",
-   count: 50,
+   count: 20,
    appid: "kXisFQFdrehKUVwvMd3x"
   })
   res = Net::HTTP.get_response(uri)
   json = JSON.parse(res.body)
+
   #Jsonの第１階層を取得すること
-    @articles = json["@graph"]
-erb :search
+    @articles = json["@graph"][0]["items"]
+#binding.pry
+  erb :search
  end
+ #json["@graph"]
 
 
 post '/new' do
-  #@categories = Category.all
+  @categories = Category.all
+  #postにはいらない
   @posts = Post.create(
     title: params[:title],
-    #comment: params[:comment],
+    comment: params[:comment],
+    creator: params[:creator],
+    publisher: params[:publisher],
+    publicname: params[:publicname],
+    volume: params[:volume],
+    number: params[:number],
+    startingpage: params[:startingpage],
+    endingpage: params[:endingpage],
+    date: params[:date],
     category_id: params[:category]
     #user_id: current_user.id
   )
   erb :booking
  end
 
- get '/booking' do
-  @posts = Post.order('id desc').all
+ get '/category/:id' do
+  @categories = Category.all
+  @category = Category.find(params[:id])
+  @category_name = @category.name
+  @posts = @category.posts
+  erb :booking
+ end
 
+ # 本棚
+ get '/booking' do
+  @categories = Category.all
+  @posts = Post.order('id desc').all
+  #binding.pry
+  #current_user.postsにする
  erb :booking
  end
 
  post '/booking' do
-   @posts = Post.order('id desc').all
+erb :booking
+ end
+
+#  database
+ get '/database' do
+  erb :database
  end

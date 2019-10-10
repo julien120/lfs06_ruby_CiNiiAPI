@@ -30,15 +30,24 @@
 <div class="bookstyle" style="   margin-bottom: 2px;
     margin: 1px;
 		display: flex;
-		margin-top:5px;
+    margin-top:5px;
+    margin-left:3px;
+    font-size:13px;
     flex-direction: column;
     align-items: left;">
-<p> <%= article["items"][0]["title"] %> </p>
-<p> <%= article["items"][0]["dc:creator"] %> </p>
-<p> <%= article["items"][0]["prism:publicationName"]  %><%= article["items"][0]["prism:volume"] %>巻<%= article["items"][0]["prism:number"] %>号<%= article["items"][0]["dc:date"] %>年<%= article["items"][0]["prism:startingPage"] %>-<%= article["items"][0]["prism:endingPage"] %>pp   </p>
+<p> <%= article["title"] %> </p>
+<p> <%= article["dc:creator"][0]["@value"] %> </p>
+<p> <%= article["prism:publicationName"]  %><%= article["prism:volume"] %>巻<%= article["prism:number"] %>号<%= article["dc:date"] %>年<%= article["prism:startingPage"] %>-<%= article["prism:endingPage"] %>pp</p>
 
 <form action="/new" method="POST">
-	<input type="hidden" value="<%=  article["items"][0]["title"] %>" name="title">
+	<input type="hidden" value="<%=  article["title"] %>" name="title">
+	<input type="hidden" value="<%=  article["dc:creator"][0]["@value"] %>" name="creator">
+  <input type="hidden" value="<%=  article["prism:publicationName"] %>" name="publisher">
+  <input type="hidden" value="<%=  article["prism:volume"] %>" name="volume">
+  <input type="hidden" value="<%=  article["prism:number"] %>" name="number">
+	<input type="hidden" value="<%=  article["prism:startingPage"] %>" name="startingpage">
+	<input type="hidden" value="<%=  article["prism:endingPage"] %>" name="endingpage">
+  <input type="hidden" value="<%=  article["dc:date"] %>" name="date">
   <select name="category" id="category">
   <% @categories.each do |category| %>
   <%#読んだ,読んでる,読みたい  %>

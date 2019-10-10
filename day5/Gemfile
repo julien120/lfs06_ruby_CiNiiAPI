@@ -9,7 +9,7 @@ gem 'fastri'
 
 gem 'sinatra'
 gem 'sinatra-contrib'
-
+#gem 'lazy_high_charts'
 gem 'sinatra-activerecord'
 
 gem 'rake'

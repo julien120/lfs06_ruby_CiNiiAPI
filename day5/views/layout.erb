@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>lfs06-originalproduct</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./style.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 </head>
 <body>
 <% unless session[:user] %>
-
 
 
 <% else %>
@@ -20,18 +20,18 @@
   <ul>
     <li>
       <a href="/search">
-        <div class="icon"><i class="fas fa-home" aria-hidden="true"></i><i class="fas fa-home" aria-hidden="true"></i></div>
+        <div class="icon"><i class="fas fa-search" aria-hidden="true"></i><i class="fas fa-search" aria-hidden="true"></i></div>
         <div class="name"><span data-text="検索">検索</span></div>
       </a>
     </li>
     <li>
-      <a href="">
-        <div class="icon"><i class="fas fa-search" aria-hidden="true"></i><i class="fas fa-search" aria-hidden="true"></i></div>
-        <div class="name"><span data-text="管理">管理</span></div>
+      <a href="/database">
+        <div class="icon"><i class="fas fa-database" aria-hidden="true"></i><i class="fas fa-database" aria-hidden="true"></i></div>
+        <div class="name"><span data-text="記録">記録</span></div>
       </a>
     </li>
     <li>
-      <a href="">
+      <a href="/booking">
         <div class="icon"><i class="fas fa-book" aria-hidden="true"></i><i class="fas fa-book" aria-hidden="true"></i></div>
         <div class="name"><span data-text="本棚">本棚</span></div>
       </a>
