@@ -1,0 +1,487 @@
+  @import url('https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+
+    background-color: rgba(48, 156, 86, 0.81);
+    /* background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%); */
+    height: 100vh;
+    font-weight: 700;
+  }
+
+  .margin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* 本棚 */
+  .bookshelf {
+    font-size: 11px;
+    color: #000000;
+    background-color: #fff;
+    padding: 3px 0px;
+    border-top: 1px solid #828282;
+    border-bottom: 1px solid #828282;
+  }
+
+
+
+  .bookingnav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .bookingnav a {
+    color: #828282;
+    font-weight: 400;
+    text-decoration: none;
+    background: #fff;
+  }
+
+  .search_container {
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    height: 2.2em;
+
+    overflow: hidden;
+
+    background: #ffffff;
+  }
+
+  .search_container input[type="text"] {
+    border: none;
+    height: 2.0em;
+
+  }
+
+  .search_container input[type="text"]:focus {
+    outline: 0;
+  }
+
+  .search_container input[type="submit"] {
+    cursor: pointer;
+    font-family: FontAwesome;
+    font-size: 1em;
+    border: none;
+    background: none;
+    color: #000000;
+    position: absolute;
+    height: 3.9em;
+    right: 18px;
+    top: -10px;
+    outline: none;
+  }
+
+  .search_container ::-webkit-input-placeholder {
+    color: #c5c2c2;
+
+  }
+
+  .bookstyle {
+    color: #fcfcfc;
+    font-size: 7px;
+    border-bottom: 1px solid #fcfcfc;
+    margin-bottom: 2px;
+    margin-top: 1px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  }
+
+
+
+
+  .screen {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+
+  .screen h3 {
+    color: #fcfcfc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .center {
+    margin-bottom: 20px;
+  }
+
+  .cp_iptxt {
+    position: relative;
+    width: 80%;
+    margin-bottom: 30px;
+    margin-top: 10px;
+  }
+
+  input[type='text'] {
+    font: 15px/24px sans-serif;
+    box-sizing: border-box;
+    width: 120%;
+    letter-spacing: 1px;
+    padding-left: 1em;
+  }
+
+  input[type='text']:focus {
+    outline: none;
+  }
+
+  .ef {
+    padding: 4px 0;
+    border: 0;
+    border-bottom: 1px solid #1b2538;
+    background-color: transparent;
+  }
+
+  .ef~.focus_line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    transition: 0.4s;
+    background-color: #fcfcfc;
+  }
+
+  .ef~.focus_line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    transition: 0.4s;
+    background-color: #fcfcfc;
+  }
+
+  .ef:focus~.focus_line,
+  .ef~.focus_line {
+    left: 0;
+    width: 120%;
+    transition: 0.4s;
+  }
+
+  .ef~label {
+    position: absolute;
+    z-index: -1;
+    top: 4px;
+    left: 0;
+    width: 110%;
+    transition: 0.3s;
+    letter-spacing: 0.5px;
+    color: #000000;
+  }
+
+  .ef:focus~label,
+  .ef~label {
+    font-size: 12px;
+    top: -16px;
+    transition: 0.3s;
+    color: #fcfcfc;
+  }
+
+  /*button*/
+  .button {
+    margin-bottom: 20px;
+    font-size: 25px;
+    color: #242424;
+    font-weight: 600;
+  }
+
+  .button:hover {
+    font-size: 25px;
+    font-weight: 800;
+  }
+
+  .btn-gradient-radius {
+    display: inline-block;
+    padding: 10px 60px;
+    border-radius: 25px;
+    text-decoration: none;
+    background-color: #fcfcfc;
+    transition: .4s;
+  }
+
+  .screen a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    display: flex;
+
+    font-size: 25px;
+  }
+
+  .btn-gradient-radius:hover {
+    background-color: #fcfcfc;
+  }
+
+  /*fixedで固定しているnavigation*/
+  ul {
+    font-family: 'Baloo Bhai',
+      cursive;
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 10px 0;
+    background: #fff;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+  }
+
+  ul li {
+    list-style: none;
+    text-align: center;
+    display: block;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  ul li:last-child {
+    border-right: none;
+  }
+
+  ul li a {
+    text-decoration: none;
+    padding: 0 43px;
+    display: block;
+  }
+
+  ul li a .icon {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+
+    overflow: hidden;
+    margin: 0 auto 10px;
+  }
+
+  ul li a .icon .fas {
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    font-size: 34px;
+    transition: 0.5s;
+    color: #000;
+  }
+
+  ul li a:hover .icon .fas:last-child {
+    color: #e91e63;
+  }
+
+  ul li a:hover .icon .fas {
+    transform: translateY(-100%);
+  }
+
+  ul li a .name {
+    position: relative;
+    height: 20px;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+  }
+
+  ul li a .name span {
+    /* display: block; */
+    position: relative;
+    color: #000;
+    font-size: 19px;
+    line-height: 20px;
+    transition: 0.5s;
+
+  }
+
+  ul li a .name span:before {
+    content: attr(data-text);
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #e91e63;
+  }
+
+  ul li a:hover .name span {
+    transform: translateY(20px);
+  }
+
+  ul li a .icon img {
+    line-height: 40px;
+    transition: 0.5s;
+    width: 100%;
+
+  }
+
+  ul li a:hover .icon img:last-child {
+    color: #e91e63;
+  }
+
+  ul li a:hover .icon img {
+    transform: translateY(-100%);
+  }
+
+  @media screen and (max-width:480px) {
+    body {
+      /* background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%); */
+      background-color: rgba(0, 125, 43, 0.81);
+      display: block;
+    }
+
+
+
+    .screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* position: absolute;
+      top: 45%; */
+      margin-top: 50px;
+
+    }
+
+    .screen h1 {
+      font-size: 22px;
+      color: #fcfcfc;
+    }
+
+    .search_container input[type="submit"] {
+      cursor: pointer;
+      font-family: FontAwesome;
+      font-size: 1em;
+      border: none;
+      background: none;
+      color: #000000;
+      position: absolute;
+      height: 2.1em;
+      right: 18px;
+      top: -4px;
+      outline: none;
+    }
+
+    .search_container input[type="text"] {
+      border: none;
+      height: -7em;
+
+    }
+
+    .search_container {
+      margin-top: 2px;
+      position: relative;
+      box-sizing: border-box;
+      display: block;
+      padding: 3px 10px;
+      border-radius: 10px;
+      height: 2.2em;
+      width: 95vw;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    ul {
+      position: fixed;
+      top: 94%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      padding: 10px 0;
+      background: #fff;
+      display: flex;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+    }
+
+    ul li a {
+      text-decoration: none;
+      padding: 0 34px;
+      display: block;
+    }
+
+    .bookingnav a {
+      color: #828282;
+      text-decoration: none;
+    }
+
+    select {
+      color: #fff;
+    }
+
+
+  }
+
+
+
+  /*　画面サイズが480pxまでこのファイルのスタイルが適用される。*/
+  @media screen and (max-width:1024px) and (max-width:1024px) {
+    ul {
+      margin: 0;
+      padding: 10px 0;
+      background: #fff;
+      display: flex;
+    }
+
+    ul li a {
+      text-decoration: none;
+      padding: 0 20px;
+      display: block;
+    }
+
+    .booking {
+      position: fixed;
+      top: 5%;
+      left: 51%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      width: 100vw;
+      padding: 10px 0;
+      /* background: #fff; */
+      display: flex;
+      border-radius: 10px;
+    }
+
+    .bookingnav a {
+      font-weight: 400;
+      color: #828282;
+      text-decoration: none;
+      list-style: none;
+      text-align: center;
+      /* display: block; */
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+      padding: 0px 20px;
+    }
+
+    .bookingnav a:last-child {
+      border-right: none;
+    }
+
+    .search {
+      /* position: relative;
+      top: 20%; */
+      box-sizing: border-box;
+      display: block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      height: 2.2em;
+      width: 95vw;
+      overflow: hidden;
+      background: #ffffff;
+    }
+  }
+
+  /* 画面サイズ480pxから1024pxまではこのファイルのスタイルが適用される。 */

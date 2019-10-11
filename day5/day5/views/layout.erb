@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>lfs06-originalproduct</title>
+<link rel="stylesheet" href="/public/assets/css/style.css">
+<%#:id以下階層が下がると/入れないとcssが適用されなくなる  %>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+<body>
+<% unless session[:user] %>
+
+
+<% else %>
+<%# session後の共通nav %>
+
+<!--  fixedで固定しているnavigation-->
+  <ul>
+    <li>
+      <a href="/search">
+        <div class="icon"><i class="fas fa-search" aria-hidden="true"></i><i class="fas fa-search" aria-hidden="true"></i></div>
+        <div class="name"><span data-text="検索">検索</span></div>
+      </a>
+    </li>
+    <li>
+      <a href="/database">
+        <div class="icon"><i class="fas fa-database" aria-hidden="true"></i><i class="fas fa-database" aria-hidden="true"></i></div>
+        <div class="name"><span data-text="記録">記録</span></div>
+      </a>
+    </li>
+    <li>
+      <a href="/booking">
+        <div class="icon"><i class="fas fa-book" aria-hidden="true"></i><i class="fas fa-book" aria-hidden="true"></i></div>
+        <div class="name"><span data-text="本棚">本棚</span></div>
+      </a>
+    </li>
+     <li>
+      <a href="/signout">
+        <div class="icon"><i class="fas fa-upload" aria-hidden="true"></i><i class="fas fa-upload" aria-hidden="true"></i></div>
+        <div class="name"><span data-text="退出">退出</span></div>
+      </a>
+    </li>
+
+  </ul>
+
+
+<% end %>
+<%# ログイン後のnav %>
+<%# apiの検索フォーム %>
+
+<%= yield %>
+
+<%# <a href="/mypage"><img src="<%= current_user.img  %>
+<%# " alt="" width="40" height="40"></a>  %>
+</body>
+</html>

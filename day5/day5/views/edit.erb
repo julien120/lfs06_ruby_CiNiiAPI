@@ -1,0 +1,13 @@
+<%# /posts/<%=@post.id%>
+<div class="" style="display: flex; flex-direction: column; align-items: center; color:#fff;">
+<h3>カテゴリー変更</h3>
+<form action="/posts/<%=@post.id%>" method="POST">
+  <select name="category" id="category" style="color:#fff; ">
+  <% @categories.each do |category| %>
+  <%#読んだ,読んでる,読みたい  %>
+  <option value="<%= category.id %>">▶︎<%= category.name %></option>
+   <% end %>
+   </select>
+    <input type="submit" value="編集!"  style="color:#fff;">
+	</form>
+</div>

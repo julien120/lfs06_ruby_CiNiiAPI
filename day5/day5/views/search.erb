@@ -1,0 +1,74 @@
+<section class="margin" style="margin-top:5px;">
+<div class="search">
+
+<%# style=" position: absolute;
+    top: 11%;
+    left: 50%;
+    transform: translate(-50%, -50%);" %>
+<div>
+	<form action="/search" method="post" class="search_container">
+		<input type="text" name="keyword" placeholder="論文を検索" size="25">
+	<div>
+<input  type="submit" value="search">
+	</div>
+	</form>
+	</div>
+
+
+
+
+<%# ↓条件分岐で検索結果がない場合のみないと返すようにする必要がある %>
+
+
+</div>
+</section>
+
+<div>
+<% if !@articles.nil? %>
+<% @articles.each do |article| %>
+
+<div class="bookstyle" style="   margin-bottom: 2px;
+    margin: 1px;
+		display: flex;
+    margin-top:5px;
+    margin-left:3px;
+    font-size:11px;
+    flex-direction: column;
+    align-items: left;">
+<p> <%= article["title"] %> </p>
+<p> <%= article["dc:creator"][0]["@value"] %> </p>
+<p> <%= article["prism:publicationName"]  %><%= article["prism:volume"] %>巻<%= article["prism:number"] %>号<%= article["prism:startingPage"] %>-<%= article["prism:endingPage"] %>pp <%= article["dc:date"] %>年</p>
+
+<form action="/new" method="POST">
+	<input type="hidden" value="<%=  article["title"] %>" name="title">
+	<input type="hidden" value="<%=  article["dc:creator"][0]["@value"] %>" name="creator">
+  <input type="hidden" value="<%=  article["prism:publicationName"] %>" name="publisher">
+  <input type="hidden" value="<%=  article["prism:volume"] %>" name="volume">
+  <input type="hidden" value="<%=  article["prism:number"] %>" name="number">
+	<input type="hidden" value="<%=  article["prism:startingPage"] %>" name="startingpage">
+	<input type="hidden" value="<%=  article["prism:endingPage"] %>" name="endingpage">
+  <input type="hidden" value="<%=  article["dc:date"] %>" name="date">
+  <%# <div class="">
+  <input class="ef" type="text" name="comment" placeholder="コメント" style="color:#fff; border-color: #fff; position: relative;
+    width: 80%;
+    margin-bottom: 30px;
+    margin-top: 10px;">
+  </div> %>
+  <select name="category" id="category" style="color:#fff; ">
+  <% @categories.each do |category| %>
+  <%#読んだ,読んでる,読みたい  %>
+  <option value="<%= category.id %>"><%= category.name %></option>
+   <% end %>
+   </select>
+
+    <input type="submit" value="保存"  style="color:#fff;">
+	</form>
+
+</div>
+<%# 書籍 %>
+
+
+
+<% end %>
+<% end %>
+</div>

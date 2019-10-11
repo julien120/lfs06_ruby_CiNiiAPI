@@ -1,0 +1,58 @@
+
+
+
+<%# fixedで上部に固定し、横ならびに配置、洗濯後は %>
+<nav class="bookingnav">
+<% @categories.each do |category| %>
+<a href="/category/<%= category.id %>" class="" ><%= category.name %></a>
+<% end %>
+</nav>
+<%# ....カテゴリーごとに表示..... %>
+
+
+
+
+
+<% @posts.each do |post| %>
+<div class="bookstyle">
+
+<a href="/edit/<%= post.id %>/hensyu" class="" style="text-decoration:none; color:#fff;">
+<p> <%= post.title  %></p>
+<p> <%= post.creator  %></p>
+<p> <%= post.publisher  %><%=post.volume %>巻<%=post.number%>号<%=post.startingpage%>-<%=post.endingpage%>pp<%=post.date%></p>
+<p><%= post.comment  %></p>
+</a>
+</div>
+<% end %>
+
+
+
+
+<%# ............. %>
+  <ul>
+    <li>
+      <a href="/search">
+        <div class="icon"><i class="fas fa-search" aria-hidden="true"></i><i class="fas fa-search" aria-hidden="true"></i></div>
+        <div class="name"><span data-text="検索">検索</span></div>
+      </a>
+    </li>
+    <li>
+      <a href="/database">
+        <div class="icon"><i class="fas fa-database" aria-hidden="true"></i><i class="fas fa-database" aria-hidden="true"></i></div>
+        <div class="name"><span data-text="記録">記録</span></div>
+      </a>
+    </li>
+    <li>
+      <a href="/booking">
+        <div class="icon"><i class="fas fa-book" aria-hidden="true"></i><i class="fas fa-book" aria-hidden="true"></i></div>
+        <div class="name"><span data-text="本棚">本棚</span></div>
+      </a>
+    </li>
+     <li>
+      <a href="/signout">
+        <div class="icon"><i class="fas fa-upload" aria-hidden="true"></i><i class="fas fa-upload" aria-hidden="true"></i></div>
+        <div class="name"><span data-text="退出">退出</span></div>
+      </a>
+    </li>
+
+  </ul>
