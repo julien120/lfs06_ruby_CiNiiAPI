@@ -16,6 +16,7 @@ helpers do
     User.find_by(id: session[:user])
   end
 end
+
 get '/' do
  erb :index
 end
@@ -98,6 +99,7 @@ keyword = params[:keyword]
 post '/new' do
   @categories = Category.all
   #postにはいらない
+  # @posts = current_user.posts.create
   @posts = Post.create(
     title: params[:title],
     comment: params[:comment],
@@ -109,11 +111,12 @@ post '/new' do
     startingpage: params[:startingpage],
     endingpage: params[:endingpage],
     date: params[:date],
-    category_id: params[:category]
-    #user_id: current_user.id
+    category_id: params[:category],
+    user_id: current_user.id
   )
   #postを作成したとに下の記述で取得しないと/newから/bookingに変遷しない
-  @posts = Post.order('id desc').all
+  @posts = current_user.posts
+  #@posts = Post.order('id desc').all
   erb :booking
  end
 
@@ -121,15 +124,20 @@ post '/new' do
   @categories = Category.all
   @category = Category.find(params[:id])
   @category_name = @category.name
+  #@posts = current_user.posts.where()
   @posts = @category.posts
+  #todo:全て取得ではなく、current_user内で@category.postsを取得するにはどうするか
   erb :booking
  end
+
+ #current_user.posts.where(category_id == 1)みたいに取り出せない？
 
  # 本棚
  get '/booking' do
   @categories = Category.all
-  @posts = Post.order('id desc').all
-#@posts = current_user.post
+  @posts = current_user.posts
+  #@posts = Post.order('id desc').all
+
   #binding.pry
   #current_user.postsにする
  erb :booking
@@ -138,24 +146,13 @@ post '/new' do
  #/newでエラー起きるから設けたが原理はわからない
  post '/booking' do
   @categories = Category.all
-  @posts = Post.order('id desc').all
+  @posts = current_user.posts
   erb :booking
  end
 
 
 
-#  database
- get '/database' do
-  erb :database
- end
 
-
- #カテゴリー変更
- post '/edit/:id' do
-  @posts.update({category_id: params[:category]})
-  @posts = Post.find(params[:id])
-  erb :booking
- end
 
  get '/edit/:id' do
   @categories = Category.all
@@ -163,12 +160,15 @@ post '/new' do
   #@posts.update({category_id: params[:category]})
  erb :edit
  end
+
 post '/posts/:id' do
   post = Post.find(params[:id])
-  post.category = params[:category_id]
+  post.category_id = params[:category]
   post.save
   redirect '/booking'
 end
+
+
 get '/posts/:id' do
    post = Post.find(params[:id])
    redirect '/booking'
@@ -178,4 +178,44 @@ get '/edit/:id/hensyu' do
   @categories = Category.all
   @post = Post.find(params[:id])
   erb :edit
+end
+
+
+ get '/database' do
+   @tags = current_user.tags
+  erb :database
+ end
+
+get '/createbookshelf' do
+  erb :createbookshelf
+ end
+
+ post '/renew' do
+    @tags = Tag.create(
+    bookshelfname: params[:bookshelfname],
+    user_id: current_user.id
+  )
+  @tags = current_user.tags
+
+  erb :database
+ end
+
+
+#todo:booklistに登録した論文を表示
+ get '/booklist/:id/add' do
+    @tags = current_user.tags
+
+  erb :booklist
+ end
+
+
+
+#todo:論文を表示し、本棚に論文を追加する行為(formでPOSTする)
+get '/bookadd' do
+@posts = current_user.posts
+  erb :bookadd
+end
+
+post '/addbook' do
+ erb :database
 end

@@ -12,7 +12,7 @@ end
 class User < ActiveRecord::Base
   has_secure_password
   has_many :posts
-
+  has_many :tags
 end
 
 class Category < ActiveRecord::Base
@@ -22,6 +22,20 @@ end
 class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
+  has_many :tags, through: :middle
   #validates :body,
     #presence: true
+end
+
+class Tag < ActiveRecord::Base
+  has_many :posts, through: :middle
+  belongs_to :user
+  validates :body
+end
+
+
+#中間テーブルは両者に所属している
+class Middle < ActiveRecord::Base
+  belongs_to :tag
+  belongs_to :post
 end

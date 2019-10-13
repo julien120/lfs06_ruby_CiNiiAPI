@@ -6,7 +6,7 @@
     left: 50%;
     transform: translate(-50%, -50%);" %>
 <div>
-	<form action="/search" method="post" class="search_container">
+	<form action="/search" method="post" class="search_container" style="color:#000;">
 		<input type="text" name="keyword" placeholder="論文を検索" size="25">
 	<div>
 <input  type="submit" value="search">
@@ -48,6 +48,7 @@
 	<input type="hidden" value="<%=  article["prism:startingPage"] %>" name="startingpage">
 	<input type="hidden" value="<%=  article["prism:endingPage"] %>" name="endingpage">
   <input type="hidden" value="<%=  article["dc:date"] %>" name="date">
+  <input type="hidden" value="<%=  article["dc:date"] %>" name="date">
   <%# <div class="">
   <input class="ef" type="text" name="comment" placeholder="コメント" style="color:#fff; border-color: #fff; position: relative;
     width: 80%;
@@ -61,7 +62,7 @@
    <% end %>
    </select>
 
-    <input type="submit" value="保存"  style="color:#fff;">
+    <input type="submit" value="保存" class="responsivecolor">
 	</form>
 
 </div>

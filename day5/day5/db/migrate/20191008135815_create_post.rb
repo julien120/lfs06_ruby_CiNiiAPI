@@ -1,8 +1,8 @@
 class CreatePost < ActiveRecord::Migration[5.2]
   def change
      create_table :posts do |t|
-      t.integer :category_id
-      t.integer :user_id
+      t.references :category
+      t.references :user
       t.text :comment
       t.string :title
       t.string :creator

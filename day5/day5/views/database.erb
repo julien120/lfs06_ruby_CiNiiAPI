@@ -1,0 +1,19 @@
+<nav class="bookingnav" style="background-color:rgba(20, 87, 43, 0.81);">
+<h3>本棚</h3>
+</nav>
+
+<% @tags.each do |tag| %>
+<a href="/booklist/<%= tag.id %>/add" class="" style="text-decoration:none; color: #000;"><div class="booklist" style="font-size: 18px;
+    background-color: #fff;
+    color: #000;
+    text-decoration:none;
+    padding: 5px 0px;
+    font-weight: 200;
+    border: 1px solid rgba(148, 144, 144, 0.79)">
+ <p><%= tag.bookshelfname  %></p>
+</div></a>
+<% end %>
+
+
+
+<div class="linkshelf"><a href="/createbookshelf" class=""> 追加</a></div>

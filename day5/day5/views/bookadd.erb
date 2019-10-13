@@ -1,0 +1,31 @@
+<nav class="bookingnav" style="background-color:rgba(20, 87, 43, 0.81);">
+
+<h3>論文の追加</h3>
+</nav>
+
+<% @posts.each do |post| %>
+<div class="bookstyle">
+
+<a href="" class="" style="text-decoration:none; color:#fff;">
+<p> <%= post.title  %></p>
+<p> <%= post.creator  %></p>
+<p> <%= post.publisher  %><%=post.volume %>巻<%=post.number%>号<%=post.startingpage%>-<%=post.endingpage%>pp<%=post.date%></p>
+<p><%= post.comment  %></p>
+
+<form action="/addbook" method="POST">
+<input type="hidden" value="<%=  post.title %>" name="title">
+<input type="hidden" value="<%=  post.creator %>" name="title">
+<input type="hidden" value="<%=  post.publisher %>" name="title">
+<input type="hidden" value="<%=  post.volume %>" name="title">
+<input type="hidden" value="<%=  post.number %>" name="title">
+<input type="hidden" value="<%=  post.startingpage %>" name="title">
+
+<input type="hidden" value="<%=  post.endingpage %>" name="title">
+<input type="hidden" value="<%=  post.date %>" name="title">
+  <input type="submit" value="登録"  class="responsivecolor">
+</form>
+
+
+</a>
+</div>
+<% end %>

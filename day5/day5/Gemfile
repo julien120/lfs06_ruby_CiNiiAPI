@@ -24,3 +24,5 @@ group :development do
   gem 'sqlite3', '~> 1.3.6'
 end
 gem 'bcrypt'
+
+ruby '2.6.0'
